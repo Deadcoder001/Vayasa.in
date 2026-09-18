@@ -36,13 +36,14 @@ jobs:
             set net:max-retries 3;
             set ftp:passive-mode true;
             open -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}";
-            echo "--- Current Working Directory on Hostinger ---";
+            echo "--- Current Directory ---";
             pwd;
-            echo "--- Remote Folders Listing ---";
+            echo "--- Cleaning up accidental nested public_html folder ---";
+            rm -rf public_html || true;
+            echo "--- Uploading directly to root ---";
+            mirror -R --verbose ./dist/ ./;
+            echo "--- Verification: Files in root ---";
             ls;
-            echo "--- Uploading Production Dist to public_html ---";
-            mirror -R --verbose ./dist/ ./public_html/;
-            echo "--- Upload Complete! Listing public_html ---";
-            cd public_html && ls;
           '
+
 
