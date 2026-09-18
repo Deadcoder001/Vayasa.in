@@ -27,13 +27,22 @@ jobs:
       - name: 🏗️ Build Production Bundle
         run: npm run build
 
-      - name: 🚀 Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: public_html/
-          log-level: verbose
-          dangerous-clean-slate: false
+      - name: 🚀 Deploy to Hostinger via LFTP
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y lftp
+          lftp -c '
+            set ssl:verify-certificate no;
+            set net:timeout 30;
+            set net:max-retries 3;
+            set ftp:passive-mode true;
+            open -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}";
+            echo "--- Current Working Directory on Hostinger ---";
+            pwd;
+            echo "--- Remote Folders Listing ---";
+            ls;
+            echo "--- Uploading Production Dist to public_html ---";
+            mirror -R --verbose ./dist/ ./public_html/;
+            echo "--- Upload Complete! Listing public_html ---";
+            cd public_html && ls;
+          '
+
