@@ -10,6 +10,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
 
     steps:
       - name: 📥 Checkout Repository
@@ -27,23 +30,14 @@ jobs:
       - name: 🏗️ Build Production Bundle
         run: npm run build
 
-      - name: 🚀 Deploy to Hostinger via LFTP
-        run: |
-          sudo apt-get update -y && sudo apt-get install -y lftp
-          lftp -c '
-            set ssl:verify-certificate no;
-            set net:timeout 30;
-            set net:max-retries 3;
-            set ftp:passive-mode true;
-            open -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}";
-            echo "--- Current Directory ---";
-            pwd;
-            echo "--- Cleaning up accidental nested public_html folder ---";
-            rm -rf public_html || true;
-            echo "--- Uploading directly to root ---";
-            mirror -R --verbose ./dist/ ./;
-            echo "--- Verification: Files in root ---";
-            ls;
-          '
+      - name: 🚀 Push Production Build to production branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: production
+          publish_dir: ./dist
+          keep_files: false
+          force_orphan: true
+
 
 
