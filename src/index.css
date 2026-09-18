@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Syne:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Cormorant Garamond", serif;
+  --font-sans: "Syne", "Inter", sans-serif;
+  
+  --color-alabaster: #faf9f6;
+  --color-charcoal: #2c2c2c;
+  --color-obsidian: #0f0f11;
+  --color-pearl: #fdfdfd;
+}
+
+* {
+  cursor: none !important;
+}
+
+/* Elastic Awwwards-style transitions */
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::selection {
+  background: rgba(44, 44, 44, 0.1);
+  color: inherit;
+}
+
+/* Hide scrollbar globally for a cleaner, minimal look */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* --- Awwwards Custom Cursor Styles --- */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-charcoal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(44, 44, 44, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.cursor-hover .custom-cursor-dot {
+  width: 0px;
+  height: 0px;
+}
+
+body.cursor-hover .custom-cursor-ring {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(44, 44, 44, 0.05);
+  border-color: rgba(44, 44, 44, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+/* --- MagicUI Marquee Animation Styles --- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1.25rem)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1.25rem)));
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee var(--duration, 40s) linear infinite reverse;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-vertical-reverse {
+  animation: marquee-vertical var(--duration, 40s) linear infinite reverse;
+}
+
+/* --- Skeleton Shimmer Animation --- */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.8s infinite;
+}
+
