@@ -2,54 +2,14 @@
 @import "tailwindcss";
 
 :root {
-  /* Default Luxury Choice: Champagne */
-  --bg-primary: #F7F3E9;
-  --bg-card: rgba(255, 255, 255, 0.75);
-  --bg-card-solid: #FFFFFF;
-  --bg-surface: #EFE7D8;
-  --text-primary: #181716;
-  --text-muted: #57524A;
-  --border-subtle: rgba(40, 36, 32, 0.08);
-}
-
-[data-theme="champagne"] {
-  --bg-primary: #F7F3E9;
-  --bg-card: rgba(255, 255, 255, 0.75);
-  --bg-card-solid: #FFFFFF;
-  --bg-surface: #EFE7D8;
-  --text-primary: #181716;
-  --text-muted: #57524A;
-  --border-subtle: rgba(40, 36, 32, 0.08);
-}
-
-[data-theme="mushroom"] {
-  --bg-primary: #EBE4DC;
-  --bg-card: rgba(250, 247, 244, 0.75);
-  --bg-card-solid: #F7F2EC;
-  --bg-surface: #DDD4CA;
-  --text-primary: #1C1B1A;
-  --text-muted: #5B5752;
-  --border-subtle: rgba(35, 33, 31, 0.08);
-}
-
-[data-theme="ivory"] {
+  /* Soft Ivory Luxury Sanctuary */
   --bg-primary: #FAF8F5;
   --bg-card: rgba(255, 255, 255, 0.8);
   --bg-card-solid: #FFFFFF;
   --bg-surface: #F1EDE6;
-  --text-primary: #191817;
-  --text-muted: #585551;
-  --border-subtle: rgba(30, 28, 26, 0.07);
-}
-
-[data-theme="taupe"] {
-  --bg-primary: #E2DAD3;
-  --bg-card: rgba(248, 244, 240, 0.75);
-  --bg-card-solid: #EDE5DE;
-  --bg-surface: #D4C9C0;
-  --text-primary: #1A1918;
-  --text-muted: #54504B;
-  --border-subtle: rgba(30, 27, 25, 0.09);
+  --text-primary: #181716;
+  --text-muted: #565451;
+  --border-subtle: rgba(28, 26, 24, 0.07);
 }
 
 @theme {
@@ -62,6 +22,7 @@
   --color-obsidian: #0f0f11;
   --color-pearl: #fdfdfd;
 }
+
 
 
 * {

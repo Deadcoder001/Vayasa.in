@@ -26,10 +26,13 @@ function ScrollToTop() {
 
 function App() {
   useEffect(() => {
-    // Remove dark mode class and storage
+    // Clean up theme artifacts
     document.documentElement.classList.remove('dark');
+    document.documentElement.removeAttribute('data-theme');
     localStorage.removeItem('theme');
+    localStorage.removeItem('vayasa_palette');
   }, []);
+
 
   return (
     <AudioProvider>

@@ -4,6 +4,8 @@ import RevealText from '../components/RevealText';
 import { useEnquiry } from '../context/EnquiryContext';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import FAQSection from '../components/FAQSection';
+import LiquidGlassButton from '../components/ui/LiquidGlassButton';
+
 
 export default function About() {
   const { openEnquiry } = useEnquiry();
@@ -242,13 +244,13 @@ export default function About() {
             Private pavilion suites and geothermal hydrotherapy slots in Guwahati are reserved exclusively by appointment.
           </p>
 
-          <button
+          <LiquidGlassButton
+            variant="dark"
+            size="lg"
+            text="BOOK SANCTUARY VISIT"
             onClick={() => openEnquiry()}
-            className="group inline-flex items-center space-x-2.5 px-8 py-3.5 rounded-full bg-charcoal hover:bg-black text-alabaster text-xs uppercase tracking-[0.2em] font-light transition-all duration-300 cursor-pointer shadow-sm"
-          >
-            <span>Book Sanctuary Visit</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+          />
+
 
 
         </div>

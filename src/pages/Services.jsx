@@ -273,13 +273,13 @@ export default function Services() {
             Open all days from 10:00 AM to 09:00 PM · Valet parking & private suites available.
           </p>
 
-          <button
+          <LiquidGlassButton
+            variant="dark"
+            size="lg"
+            text="BOOK APPOINTMENT"
             onClick={() => openEnquiry()}
-            className="group inline-flex items-center space-x-2.5 px-8 py-3.5 rounded-full bg-charcoal hover:bg-black text-alabaster text-xs uppercase tracking-[0.2em] font-light transition-all duration-300 cursor-pointer shadow-sm"
-          >
-            <span>Book an Appointment</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+          />
+
 
         </div>
       </section>
