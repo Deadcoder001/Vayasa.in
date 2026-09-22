@@ -18,8 +18,11 @@ import {
   Award,
   HeartHandshake
 } from 'lucide-react';
+import LiquidGlassButton from '../components/ui/LiquidGlassButton';
+
 
 export default function ServiceDetail() {
+
   const { slug } = useParams();
   const navigate = useNavigate();
   const { openEnquiry } = useEnquiry();
@@ -104,15 +107,16 @@ export default function ServiceDetail() {
             </p>
           </div>
 
-          <div className="lg:col-span-4 flex lg:justify-end">
-            <button
+          <div className="lg:col-span-4 flex lg:justify-end items-center">
+            <LiquidGlassButton
+              variant="dark"
+              size="lg"
+              text="CURATE THIS RITUAL"
               onClick={() => openEnquiry(service.title)}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-charcoal hover:bg-black text-alabaster text-xs uppercase tracking-[0.2em] font-light transition-all duration-300 cursor-pointer shadow-md flex items-center justify-center space-x-3"
-            >
-              <Calendar className="w-4 h-4" />
-              <span>Reserve This Treatment</span>
-            </button>
+            />
           </div>
+
+
 
         </div>
       </section>

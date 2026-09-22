@@ -115,11 +115,12 @@ export default function EnquiryDrawer() {
             <div className="pt-4 pb-2 px-6 flex items-center justify-between">
               <div>
                 <span className="text-[10px] uppercase tracking-[0.25em] text-gray-400 font-mono">
-                  Reservation
+                  Book Treatment
                 </span>
                 <h3 className="text-xl font-serif font-light text-charcoal">
-                  Reserve a Ritual
+                  Book an Experience
                 </h3>
+
               </div>
               <button
                 onClick={closeEnquiry}

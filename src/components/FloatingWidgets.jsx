@@ -3,6 +3,8 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useAudio } from '../context/AudioContext';
 import { Volume2, VolumeX, ArrowUp } from 'lucide-react';
+import ThemePaletteSwitcher from './ThemePaletteSwitcher';
+
 
 const FloatingWidgets = () => {
   const { isPlaying, toggleAudio } = useAudio();
@@ -90,8 +92,12 @@ const FloatingWidgets = () => {
           <ArrowUp className="w-4 h-4 text-charcoal/70 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-charcoal relative z-10" strokeWidth={1.5} />
         </motion.button>
       </div>
+
+      {/* Floating Theme Palette Switcher */}
+      <ThemePaletteSwitcher />
     </>
   );
 };
+
 
 export default FloatingWidgets;

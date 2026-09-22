@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import TextFlip from './TextFlip';
 import { motion } from 'framer-motion';
 import { useEnquiry } from '../context/EnquiryContext';
+import LiquidGlassButton from './ui/LiquidGlassButton';
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -36,13 +37,10 @@ function Navbar() {
   };
 
   // On the Home page, the hero banner is dark video when unscrolled.
-  // On all other pages (or when scrolled/menu open), the page background is light alabaster.
+  // On all other pages (or when scrolled/menu open), the page background is light.
   const isHeroDark = isHomePage && !isScrolled && !isSidebarOpen;
   const textColor = isHeroDark ? 'text-white' : 'text-charcoal';
   const logoClass = isHeroDark ? 'brightness-100' : 'brightness-0';
-  const reserveBtnClass = isHeroDark
-    ? 'border-white/30 text-white hover:bg-white/10 hover:border-white'
-    : 'border-charcoal/20 text-charcoal hover:bg-black/5 hover:border-charcoal';
 
   return (
     <>
@@ -57,22 +55,20 @@ function Navbar() {
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         className={`fixed w-full top-0 z-[100] transition-colors duration-500 flex flex-col`}
       >
-        {/* Advertisement / Announcement Bar */}
-        <div className={`w-full bg-charcoal text-gray-200 text-center text-[9px] sm:text-xs uppercase tracking-[0.1em] sm:tracking-[0.2em] font-light relative transition-all duration-500 overflow-hidden ${isScrolled ? 'max-h-0 py-0 opacity-0' : 'max-h-20 py-2 sm:py-3 px-2 sm:px-4 opacity-100'}`}>
-          <span className="hidden sm:inline">Enjoy a complimentary 30-minute upgrade on all bookings this month.</span>
-          <span className="sm:hidden">Complimentary 30-min upgrade.</span>
-          <button onClick={() => openEnquiry()} className="ml-2 sm:ml-3 underline underline-offset-4 hover:text-white transition-colors cursor-pointer bg-transparent border-none text-inherit uppercase text-[9px] sm:text-xs font-light">Book Now</button>
-        </div>
-
-        <nav className={`w-full transition-all duration-500 border-b ${
+        <nav className={`w-full transition-all duration-500 relative ${
           isSidebarOpen
             ? 'bg-alabaster border-transparent'
             : isScrolled
-            ? 'bg-alabaster/95 backdrop-blur-xl border-gray-200/40 shadow-[0_4px_20px_rgba(0,0,0,0.03)]'
+            ? 'bg-alabaster/75 backdrop-blur-2xl backdrop-saturate-200 border-b border-white/50 shadow-[0_10px_32px_0_rgba(0,0,0,0.05),inset_0_1px_1px_0_rgba(255,255,255,0.7)]'
             : isHomePage
             ? 'bg-transparent border-transparent'
-            : 'bg-alabaster/90 backdrop-blur-md border-gray-200/30'
+            : 'bg-alabaster/80 backdrop-blur-xl backdrop-saturate-180 border-b border-white/40 shadow-[0_4px_20px_0_rgba(0,0,0,0.02)]'
         }`}>
+          {/* Top Edge Specular Rim (VisionOS Glass Highlight) */}
+          {(isScrolled || !isHomePage) && (
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+          )}
+
           <div className="w-full px-4 sm:px-8 md:px-16">
             <div className={`flex justify-between items-center transition-all duration-500 ${isScrolled ? 'h-16 sm:h-20' : 'h-18 sm:h-24'}`}>
 
@@ -81,32 +77,34 @@ function Navbar() {
                 className="flex items-center flex-1 py-4"
                 onMouseEnter={handleOpenMenu}
               >
-                {/* 3-Line Staggered Animated Hamburger */}
+                {/* 3-Line Staggered Animated Hamburger with Apple Glass Hover */}
                 <button
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                  className={`group relative w-6 sm:w-7 h-3 sm:h-3.5 flex flex-col justify-between cursor-pointer transition-all duration-300 ${textColor} hover:opacity-70`}
+                  className={`group relative p-2.5 rounded-full transition-all duration-300 ${textColor} hover:bg-black/5 cursor-pointer`}
                   aria-label="Toggle Menu"
                 >
-                  {/* Top Line */}
-                  <span
-                    className={`block h-[1.5px] bg-current transform origin-center transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
-                      isSidebarOpen ? 'w-6 sm:w-7 translate-y-[5px] sm:translate-y-[6px] rotate-45' : 'w-full'
-                    }`}
-                  ></span>
-                  
-                  {/* Middle Line (Shorter) */}
-                  <span
-                    className={`block h-[1.5px] bg-current transform origin-center transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
-                      isSidebarOpen ? 'w-0 opacity-0' : 'w-[60%]'
-                    }`}
-                  ></span>
-                  
-                  {/* Bottom Line */}
-                  <span
-                    className={`block h-[1.5px] bg-current transform origin-center transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
-                      isSidebarOpen ? 'w-6 sm:w-7 -translate-y-[5.5px] sm:-translate-y-[6.5px] -rotate-45' : 'w-full'
-                    }`}
-                  ></span>
+                  <div className="w-6 sm:w-7 h-3 sm:h-3.5 flex flex-col justify-between">
+                    {/* Top Line */}
+                    <span
+                      className={`block h-[1.5px] bg-current transform origin-center transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+                        isSidebarOpen ? 'w-6 sm:w-7 translate-y-[5px] sm:translate-y-[6px] rotate-45' : 'w-full'
+                      }`}
+                    ></span>
+                    
+                    {/* Middle Line (Shorter) */}
+                    <span
+                      className={`block h-[1.5px] bg-current transform origin-center transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+                        isSidebarOpen ? 'w-0 opacity-0' : 'w-[60%]'
+                      }`}
+                    ></span>
+                    
+                    {/* Bottom Line */}
+                    <span
+                      className={`block h-[1.5px] bg-current transform origin-center transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+                        isSidebarOpen ? 'w-6 sm:w-7 -translate-y-[5.5px] sm:-translate-y-[6.5px] -rotate-45' : 'w-full'
+                      }`}
+                    ></span>
+                  </div>
                 </button>
               </div>
 
@@ -121,31 +119,24 @@ function Navbar() {
                 </Link>
               </div>
 
-              {/* Right side: Reserve (Minimalist Luxury Action) */}
-              <div className="flex items-center justify-end flex-1">
-                <button
+              {/* Right side: Liquid Glass Action Button */}
+              <div className="flex items-center justify-end flex-1 whitespace-nowrap shrink-0">
+                <LiquidGlassButton
+                  variant={isHeroDark ? 'dark' : 'light'}
+                  size="md"
+                  text="BOOK NOW"
                   onClick={() => openEnquiry()}
-                  className={`flex items-center space-x-1.5 sm:space-x-2.5 text-[9px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] font-light px-3.5 py-1.5 sm:px-6 sm:py-2 rounded-full border transition-all duration-300 cursor-pointer whitespace-nowrap group ${reserveBtnClass}`}
-                >
-                  <TextFlip text="RESERVE" stagger />
-                  <svg
-                    className="w-2.5 h-2.5 sm:w-3 sm:h-3 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-70 group-hover:opacity-100"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 9L9 3M9 3H4.5M9 3V7.5" />
-                  </svg>
-                </button>
+                />
               </div>
+
+
 
             </div>
           </div>
         </nav>
       </motion.header>
+
+
 
       {/* Invisible Overlay to close menu when clicking outside */}
       {isSidebarOpen && (

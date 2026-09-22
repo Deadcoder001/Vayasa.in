@@ -5,6 +5,8 @@ import { useEnquiry } from '../context/EnquiryContext';
 import { servicesData } from '../data/servicesData';
 import { ArrowRight, Clock } from 'lucide-react';
 import FAQSection from '../components/FAQSection';
+import LiquidGlassButton from '../components/ui/LiquidGlassButton';
+
 
 const categories = [
   { label: 'All Services', count: 19 },
@@ -199,19 +201,20 @@ export default function Services() {
                     {service.desc}
                   </p>
 
-                  {/* 5. Minimal Apple Pill Action Button */}
-                  <div className="w-full flex items-center justify-center space-x-2">
-                    <button
+                  {/* 5. Apple VisionOS Liquid Glass Action Button */}
+                  <div className="w-full flex items-center justify-center pt-1">
+                    <LiquidGlassButton
+                      variant="light"
+                      size="sm"
+                      text="PLAN RITUAL"
                       onClick={(e) => {
                         e.stopPropagation();
                         openEnquiry(service.title);
                       }}
-                      className="w-full max-w-[210px] py-2.5 sm:py-3 px-6 rounded-full bg-white/90 hover:bg-white text-charcoal font-sans text-xs tracking-wide font-medium shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-white/60 transition-colors duration-200 cursor-pointer flex items-center justify-center space-x-1.5"
-                    >
-                      <span>Reserve Ritual</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-charcoal/70" />
-                    </button>
+                      className="w-full max-w-[210px]"
+                    />
                   </div>
+
                 </div>
               </div>
             ))}

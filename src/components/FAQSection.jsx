@@ -30,9 +30,10 @@ const faqItems = [
   },
   {
     id: '05',
-    question: 'How do I book an appointment or reserve a private suite?',
+    question: 'How do I book an appointment or private suite?',
     answer:
-      'Appointments can be reserved seamlessly through our online concierge or by contacting our guest relations team directly at 08062757161 or info@vayasaspa.com. We are open all days from 10:00 AM to 09:00 PM.',
+      'Appointments can be booked seamlessly through our online concierge or by contacting our guest relations team directly at 08062757161 or info@vayasaspa.com. We are open all days from 10:00 AM to 09:00 PM.',
+
   },
   {
     id: '06',

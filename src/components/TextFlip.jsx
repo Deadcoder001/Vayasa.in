@@ -3,8 +3,9 @@ import React from 'react';
 export default function TextFlip({ text, className = "", stagger = false }) {
   if (stagger) {
     return (
-      <span className={`inline-flex overflow-hidden relative group/flip ${className}`}>
-        <span className="inline-flex transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover/flip:-translate-y-full group-hover:-translate-y-full">
+      <span className={`inline-flex items-center whitespace-nowrap flex-nowrap overflow-hidden relative group/flip ${className}`}>
+        <span className="inline-flex items-center whitespace-nowrap flex-nowrap transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover/flip:-translate-y-full group-hover:-translate-y-full">
+
           {text.split('').map((char, i) => (
             <span
               key={i}

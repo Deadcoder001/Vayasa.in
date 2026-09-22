@@ -246,9 +246,10 @@ export default function About() {
             onClick={() => openEnquiry()}
             className="group inline-flex items-center space-x-2.5 px-8 py-3.5 rounded-full bg-charcoal hover:bg-black text-alabaster text-xs uppercase tracking-[0.2em] font-light transition-all duration-300 cursor-pointer shadow-sm"
           >
-            <span>Reserve Sanctuary Visit</span>
+            <span>Book Sanctuary Visit</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
+
 
         </div>
       </section>

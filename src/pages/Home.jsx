@@ -11,6 +11,9 @@ import CustomerReviews from '../components/CustomerReviews';
 import FAQSection from '../components/FAQSection';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEnquiry } from '../context/EnquiryContext';
+import LiquidGlassButton from '../components/ui/LiquidGlassButton';
+
+
 
 const salonAndBeautyTreatments = [
   {
@@ -180,7 +183,7 @@ function Home() {
                       }}
                       className="text-xs uppercase tracking-[0.15em] pb-1 border-b border-gray-400 hover:border-gray-900 transition-colors inline-block cursor-pointer bg-transparent"
                     >
-                      <TextFlip text="Reserve Ritual" />
+                      <TextFlip text="Book Now" />
                     </button>
                   </Magnetic>
                   <Link 
@@ -227,7 +230,7 @@ function Home() {
                       }}
                       className="text-xs uppercase tracking-[0.15em] pb-1 border-b border-gray-400 hover:border-gray-900 transition-colors inline-block cursor-pointer bg-transparent"
                     >
-                      <TextFlip text="Reserve Ritual" />
+                      <TextFlip text="Book Now" />
                     </button>
                   </Magnetic>
                   <Link 
@@ -359,7 +362,7 @@ function Home() {
                             }}
                             className="inline-block text-xs uppercase tracking-[0.15em] pb-1 border-b border-gray-400 text-gray-800 hover:border-gray-900 transition-colors cursor-pointer bg-transparent"
                           >
-                            <TextFlip text="Reserve Ritual" />
+                            <TextFlip text="Book Now" />
                           </button>
                         </Magnetic>
                         <span className="text-xs text-gray-400 group-hover:text-charcoal transition-colors">
@@ -523,26 +526,17 @@ function Home() {
               <RevealText>Begin Your Journey at Vayasa</RevealText>
             </h2>
             <p className="text-sm text-gray-400 font-light mt-2">
-              Reserve your sanctuary experience at Vayasa today and discover true tranquility.
+              Book your sanctuary experience at Vayasa today and discover true tranquility.
             </p>
           </div>
-          <button
+          <LiquidGlassButton
+            variant="dark"
+            size="lg"
+            text="BOOK NOW"
             onClick={() => openEnquiry()}
-            className="group flex items-center justify-center space-x-2 sm:space-x-2.5 border border-pearl/40 hover:border-pearl bg-white/5 hover:bg-pearl text-pearl hover:text-charcoal px-5 sm:px-7 py-2.5 sm:py-3 rounded-full uppercase tracking-[0.22em] text-[10px] sm:text-xs font-light transition-all duration-300 cursor-pointer whitespace-nowrap"
-          >
-            <TextFlip text="RESERVE NOW" stagger />
-            <svg
-              className="w-2.5 h-2.5 sm:w-3 sm:h-3 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 opacity-75 group-hover:opacity-100"
-              viewBox="0 0 12 12"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M3 9L9 3M9 3H4.5M9 3V7.5" />
-            </svg>
-          </button>
+          />
+
+
         </div>
       </section>
     </div >

@@ -30,7 +30,8 @@ const reviews = [
     name: "Vikram & Shalini Singhania",
     username: "@singhania · Delhi NCR",
     treatment: "Bespoke Pavilion Suite",
-    body: "We reserved the private pavilion suite during our Brahmaputra trip. The bespoke oil blending and quiet luxury rival the finest wellness sanctuaries in Bali or Kyoto.",
+    body: "We booked the private pavilion suite during our Brahmaputra trip. The bespoke oil blending and quiet luxury rival the finest wellness sanctuaries in Bali or Kyoto.",
+
     img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=120&auto=format&fit=crop",
   },
   {
