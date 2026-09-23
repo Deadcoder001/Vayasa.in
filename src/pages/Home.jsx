@@ -410,14 +410,24 @@ function Home() {
       {/* <EditorialStats /> */}
 
       {/* The World of Vayasa Section */}
-      <section className="w-full px-4 sm:px-6 md:px-12 py-24 flex justify-center bg-alabaster">
-        <div className="w-full max-w-[1920px] flex flex-col items-center">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-3">
-            COLLECTIONS & GIFTING
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif text-charcoal mb-16 font-light">
-            <RevealText>The World of Vayasa</RevealText>
-          </h2>
+      <section className="w-full px-4 sm:px-6 md:px-12 py-24 flex justify-center bg-alabaster border-t border-gray-200/70">
+        <div className="w-full max-w-[1920px] flex flex-col items-start">
+          <div className="w-full flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 md:mb-16">
+            <div className="flex flex-col items-start text-left">
+              <div className="flex items-center space-x-3 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-charcoal/70" />
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-gray-500 font-light">
+                  COLLECTIONS & GIFTING
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-light text-charcoal tracking-tight leading-[1.1]">
+                <RevealText>The World of Vayasa</RevealText>
+              </h2>
+            </div>
+            <p className="text-sm sm:text-base text-gray-600 font-light max-w-xl leading-relaxed lg:pb-1 text-left">
+              Thoughtfully curated wellness essentials, bespoke gift certificates, and botanical formulations designed for your daily self-care ritual.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 w-full">
             {/* Card 1: Gift Card */}
